@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <SurfaceView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/surfaceview"
+        android:layout_above="@+id/line"
+        android:layout_alignParentTop="true"
+        />
+    <LinearLayout
+        android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/btnFlush"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="清屏"/>
+        <Button
+            android:id="@+id/btnColor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="颜色"/>
+        </LinearLayout>
+
+</RelativeLayout>
