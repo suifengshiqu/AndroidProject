@@ -1,25 +1,23 @@
 package com.example.myapplication.app;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
+import android.app.*;
 import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.Rect;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 
 
+@SuppressWarnings("ConstantConditions")
 public class MyWall extends ActionBarActivity {
 
     private SurfaceView surfaceView;
@@ -38,7 +36,7 @@ public class MyWall extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_wall);
-        this.getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         surfaceView = (SurfaceView)findViewById(R.id.surfaceview);
         surfaceHolder = surfaceView.getHolder();
 
@@ -52,7 +50,9 @@ public class MyWall extends ActionBarActivity {
             public void onClick(View view) {
                 //锁定整个SurfaceView
                 Canvas mCanvas = surfaceHolder.lockCanvas();
-                mCanvas.drawColor(Color.BLACK);
+                if (mCanvas != null) {
+                    mCanvas.drawColor(Color.BLACK);
+                }
                 //绘制完成，提交修改
                 surfaceHolder.unlockCanvasAndPost(mCanvas);
                 //重新锁定一次
@@ -75,19 +75,16 @@ public class MyWall extends ActionBarActivity {
                                     case 0: {
                                         //画笔颜色
                                         mPaint.setColor(Color.RED);
-                                        selected = 0;
                                         break;
                                     }
                                     case 1:
                                     {
                                         mPaint.setColor(Color.GREEN);
-                                        selected = 1;
                                         break;
                                     }
                                     case 2:
                                     {
                                         mPaint.setColor(Color.BLUE);
-                                        selected=2;
                                         break;
                                     }
                                 }
@@ -113,20 +110,18 @@ public class MyWall extends ActionBarActivity {
         float y = event.getY() - 50;
 
         if(canDraw)
-        {
-            switch (event.getAction())
-            {
-                case MotionEvent.ACTION_MOVE:
-                {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_MOVE: {
                     Canvas mCanvas = surfaceHolder.lockCanvas();
-                    mCanvas.drawLine(x, y, oldX, oldY, mPaint);
+                    if (mCanvas != null) {
+                        mCanvas.drawLine(x, y, oldX, oldY, mPaint);
+                    }
                     surfaceHolder.unlockCanvasAndPost(mCanvas);
-                    surfaceHolder.lockCanvas(new Rect(0,0,0,0));
+                    surfaceHolder.lockCanvas(new Rect(0, 0, 0, 0));
                     surfaceHolder.unlockCanvasAndPost(mCanvas);
                     break;
                 }
             }
-        }
         oldX=x;
         oldY = y;
         canDraw = true;
@@ -148,10 +143,7 @@ public class MyWall extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
 }
