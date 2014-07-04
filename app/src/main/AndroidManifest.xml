@@ -12,13 +12,9 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.example.myapplication.app.TabActivity"
-            android:label="@string/title_activity_tab"
-            android:parentActivityName="com.example.myapplication.app.MainActivity" >
         </activity>
         <activity
             android:name="com.example.myapplication.app.LinearLayoutActivity"
@@ -40,8 +36,13 @@
         </activity>
         <activity
             android:name="com.example.myapplication.app.MyWall"
-            android:parentActivityName=".MainActivity"
-            android:label="@string/title_activity_my_wall" >
+            android:label="@string/title_activity_my_wall"
+            android:parentActivityName="com.example.myapplication.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.myapplication.app.TabActivity"
+            android:parentActivityName="com.example.myapplication.app.MainActivity"
+            android:label="@string/title_activity_tab" >
         </activity>
     </application>
 

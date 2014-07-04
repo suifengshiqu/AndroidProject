@@ -13,5 +13,13 @@
     <string name="action_search">查询</string>
     <string name="DemoMessage">测试文字</string>
     <string name="title_activity_my_wall">涂鸦板</string>
+    <string name="action_plus">添加</string>
+    <string name="action_album">我的相册</string>
+    <string name="action_Collection">我的收藏</string>
+    <string name="action_card">我的卡片</string>
+    <string name="action_aztion_feed">问题反馈</string>
+    <string name="plus_group_chat">发起群聊</string>
+    <string name="plus_add_friend">添加朋友</string>
+    <string name="plus_take_photo">拍照上传</string>
 
 </resources>
